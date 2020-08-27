@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import { computed, toRefs } from 'vue'
+
 export default {
   name: 'ElContainer',
 
@@ -13,20 +15,24 @@ export default {
   props: {
     direction: String
   },
-
-  computed: {
-    isVertical() {
-      if (this.direction === 'vertical') {
+  setup(props, { slots }) {
+    const { direction } = toRefs(props)
+    const isVertical = computed((direction) => {
+      if (direction === 'vertical') {
         return true
-      } else if (this.direction === 'horizontal') {
+      } else if (direction === 'horizontal') {
         return false
       }
-      return this.$slots && this.$slots.default
-        ? this.$slots.default().some((vnode) => {
-            const tag = vnode.componentOptions && vnode.componentOptions.tag
-            return tag === 'el-header' || tag === 'el-footer'
+      return slots && slots.default
+        ? slots.default().some((vnode) => {
+            const tag = vnode.type && vnode.type.componentName
+            return tag === 'ElHeader' || tag === 'ElFooter'
           })
         : false
+    })
+    return {
+      direction,
+      isVertical
     }
   }
 }
