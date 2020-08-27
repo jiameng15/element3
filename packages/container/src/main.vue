@@ -17,7 +17,7 @@ export default {
   },
   setup(props, { slots }) {
     const { direction } = toRefs(props)
-    const isVertical = computed((direction) => {
+    const isVertical = computed(() => {
       if (direction === 'vertical') {
         return true
       } else if (direction === 'horizontal') {
@@ -31,7 +31,6 @@ export default {
         : false
     })
     return {
-      direction,
       isVertical
     }
   }
