@@ -87,7 +87,7 @@
     "throttle-debounce": "^1.0.1"
   },
   "peerDependencies": {
-    "vue": "^3.0.0-rc.5"
+    "vue": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
@@ -106,7 +106,7 @@
     "@vue/compiler-sfc": "^3.0.0-rc.5",
     "@vue/component-compiler-utils": "^2.6.0",
     "@vue/eslint-config-prettier": "^6.0.0",
-    "@vue/test-utils": "^2.0.0-beta.0",
+    "@vue/test-utils": "^2.0.0-beta.6",
     "algoliasearch": "^3.24.5",
     "babel-cli": "^7.0.0-beta.3",
     "babel-core": "^7.0.0-beta.3",
@@ -178,7 +178,7 @@
     "uglifyjs-webpack-plugin": "^2.1.1",
     "uppercamelcase": "^1.1.0",
     "url-loader": "^1.0.1",
-    "vue": "^3.0.0-rc.4",
+    "vue": "^3.0.0",
     "vue-jest": "^5.0.0-alpha.3",
     "vue-loader": "16.0.0-beta.4",
     "vue-router": "^4.0.0-beta.3",
