@@ -22,7 +22,7 @@ import ElInputNumber from '../packages/input-number'
 import ElSelect from '../packages/select'
 import ElOption from '../packages/option'
 import ElOptionGroup from '../packages/option-group'
-import ElCascader from '../packages/calendar'
+import ElCascader from '../packages/cascader'
 import ElCascaderPanel from '../packages/cascader-panel'
 import ElSwitch from '../packages/switch'
 import ElSlider from '../packages/slider'
@@ -36,7 +36,8 @@ import ElTransfer from '../packages/transfer'
 import ElForm from '../packages/form'
 import ElFormItem from '../packages/form-item'
 // Data
-// import ElTable
+import ElTable from '../packages/table'
+import ElTableColumn from '../packages/table-column'
 import ElTag from '../packages/tag'
 import ElProgress from '../packages/progress'
 import ElTree from '../packages/tree'
@@ -50,12 +51,7 @@ import ElLoading, { useLoading } from '../packages/loading'
 
 import { useMessage } from '../packages/message'
 
-import {
-  useMsgbox,
-  useAlert,
-  usePrompt,
-  useConfirm
-} from '../packages/message-box'
+import { useMsgbox } from '../packages/message-box'
 
 import { useNotify } from '../packages/notification'
 // Navigation
@@ -91,6 +87,7 @@ import ElImage from '../packages/image'
 import ElBacktop from '../packages/backtop'
 import ElInfiniteScroll from '../packages/infinite-scroll'
 import ElDrawer from '../packages/drawer'
+import ElScrollbar from '../packages/scrollbar'
 
 import { version } from '../package.json'
 
@@ -133,6 +130,8 @@ const components = [
   ElLoading,
   ElForm,
   ElFormItem,
+  ElTable,
+  ElTableColumn,
   ElRadio,
   ElRadioButton,
   ElRadioGroup,
@@ -168,18 +167,25 @@ const components = [
   ElCalendar,
   ElImage,
   ElInfiniteScroll,
-  ElDrawer
+  ElDrawer,
+  ElScrollbar
 ]
 
 const install = (app, opts = {}) => {
-  app.config.globalProperties.$ELEMENT = {
-    size: opts.size || '',
-    zIndex: opts.zIndex || 2000
-  }
+  app.use(setupGlobalOptions(opts))
 
   components.forEach((component) => {
     app.use(component)
   })
+}
+
+const setupGlobalOptions = (opts = {}) => {
+  return (app) => {
+    app.config.globalProperties.$ELEMENT = {
+      size: opts.size || '',
+      zIndex: opts.zIndex || 2000
+    }
+  }
 }
 
 const elementUI = {
@@ -228,6 +234,8 @@ export {
   ElLoading,
   ElForm,
   ElFormItem,
+  ElTable,
+  ElTableColumn,
   ElRadio,
   ElRadioButton,
   ElRadioGroup,
@@ -261,13 +269,13 @@ export {
   ElDivider,
   ElCalendar,
   ElImage,
+  ElScrollbar,
   useMessage,
   useLoading,
   useMsgbox,
-  useAlert,
-  usePrompt,
-  useConfirm,
-  useNotify
+  useNotify,
+  install,
+  setupGlobalOptions
 }
 
 export default elementUI
